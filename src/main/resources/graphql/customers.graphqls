@@ -1,0 +1,11 @@
+type Customer {
+    cif: ID!
+    customerId: String!
+    name: String!
+    segment: String
+}
+
+# The Root Query for the application
+type Query {
+    getCustomers(count: Int, offset: Int): [Customer]!
+}
