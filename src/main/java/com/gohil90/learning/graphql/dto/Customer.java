@@ -1,20 +1,24 @@
 package com.gohil90.learning.graphql.dto;
 
+import java.util.List;
+
 public class Customer {
     private String cif;
     private String customerId;
     private String name;
     private Segment segment;
+    private List<String> accountIds;
 
     public enum Segment {
         PRB, PR, PSB, STAFF
     }
 
-    public Customer(String cif, String customerId, String name, Segment segment) {
+    public Customer(String cif, String customerId, String name, Segment segment, List<String> accountIds) {
         this.cif = cif;
         this.customerId = customerId;
         this.name = name;
         this.segment = segment;
+        this.accountIds = accountIds;
     }
 
     public String getCif() {
@@ -47,5 +51,13 @@ public class Customer {
 
     public void setSegment(Segment segment) {
         this.segment = segment;
+    }
+
+    public List<String> getAccountIds() {
+        return accountIds;
+    }
+
+    public void setAccountIds(List<String> accountIds) {
+        this.accountIds = accountIds;
     }
 }

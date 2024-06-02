@@ -8,10 +8,19 @@ import java.util.List;
 
 @Repository
 public class CustomerDao {
+
+    private static final List<Customer> CUSTOMERS =
+            Arrays.asList(new Customer("12345678", "CUE-ajsbhdauysbd",
+                            "Nayan", Customer.Segment.PSB, Arrays.asList("ACE-1", "ACE-2")),
+                    new Customer("87654321", "CUE-sieuryw47e",
+                            " Nilesh", Customer.Segment.STAFF, Arrays.asList("ACE-3", "ACE-4")));
+
     public List<Customer> getCustomers(int count, int offset) {
-        return Arrays.asList(new Customer("12345678", "CUE-ajsbhdauysbd",
-                        "Nayan", Customer.Segment.PSB),
-                new Customer("87654321", "CUE-sieuryw47e",
-                        " Nilesh", Customer.Segment.STAFF));
+        return CUSTOMERS.subList(offset, offset + count);
+    }
+
+    public Customer getCustomer(String cif) {
+        return CUSTOMERS.stream().filter(customer -> customer.getCif().equalsIgnoreCase(cif))
+                .findAny().orElse(null);
     }
 }

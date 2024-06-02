@@ -3,9 +3,17 @@ type Customer {
     customerId: String!
     name: String!
     segment: String
+    accounts: [Account]
+}
+
+type Account {
+    id: ID!
+    number: String!
+    type: String
 }
 
 # The Root Query for the application
 type Query {
     getCustomers(count: Int, offset: Int): [Customer]!
+    getCustomer(cif: String): Customer!
 }
